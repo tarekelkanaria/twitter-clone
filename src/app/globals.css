@@ -2,26 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+@layer components {
+  .hover-effect {
+    @apply cursor-pointer hover:bg-gray-200 rounded-full w-14 xl:w-auto h-14 xl:h-auto xl:p-3 transition-colors duration-200;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  .main-btn {
+    @apply bg-blue-400 text-white text-lg font-bold rounded-full shadow-md hover:brightness-95 transition-colors duration-150;
+  }
+  .form-icon {
+    @apply hover-effect p-2 text-3xl text-sky-500 hover:bg-sky-100;
+  }
+  .post-icon {
+    @apply text-2xl w-9 h-9 p-2 rounded-full cursor-pointer transition-colors duration-200;
+  }
+  .widget-container {
+    @apply w-11/12 xl:w-3/4 bg-[#eff3f4] rounded-xl pt-2;
+  }
+  .widget-title {
+    @apply font-bold text-xl px-4 mb-3;
+  }
+  .widget-btn {
+    @apply pl-4 pb-3 text-blue-300 hover:text-blue-400 transition-colors duration-200;
+  }
+  .widget-item-container {
+    @apply px-4 py-2 flex items-center hover:bg-gray-200 transition-colors duration-200 mb-3;
+  }
 }
