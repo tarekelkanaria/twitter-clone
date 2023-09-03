@@ -1,4 +1,4 @@
-import { FollowerProfile } from "@/types";
+import type { FollowerProfile } from "@/types";
 
 const Follower = ({
   name: { first: firstName, last: lastName },

@@ -1,12 +1,13 @@
 import Image from "next/image";
-import { MenuItemType } from "@/types";
+import type { MenuItemType } from "@/types";
 import { BiSolidHomeCircle, BiSearch } from "react-icons/bi";
 import { PiBell, PiClipboardTextLight } from "react-icons/pi";
 import { HiOutlineUsers, HiOutlineDotsCircleHorizontal } from "react-icons/hi";
 import { HiOutlineEnvelope } from "react-icons/hi2";
 import { FaRegUser } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
 import MenuItem from "./MenuItem";
+import SideBarActions from "./SideBarActions";
+import MiniProfile from "./MiniProfile";
 
 const menuList: MenuItemType[] = [
   { id: "1", text: "Home", Icon: BiSolidHomeCircle },
@@ -16,7 +17,11 @@ const menuList: MenuItemType[] = [
   { id: "5", text: "Lists", Icon: PiClipboardTextLight },
   { id: "6", text: "Communities", Icon: HiOutlineUsers },
   { id: "7", text: "Profile", Icon: FaRegUser },
-  { id: "8", text: "More", Icon: HiOutlineDotsCircleHorizontal },
+  {
+    id: "8",
+    text: "More",
+    Icon: HiOutlineDotsCircleHorizontal,
+  },
 ];
 
 export default function SideBar() {
@@ -41,24 +46,8 @@ export default function SideBar() {
           />
         ))}
       </nav>
-      <button type="button" className="w-56 h-12 hidden xl:inline main-btn">
-        Post
-      </button>
-      <div className="hover-effect text-gray-700 flex items-center justify-center xl:justify-start mt-auto">
-        <Image
-          src="https://avatars.githubusercontent.com/u/101680180?v=4"
-          alt="User image"
-          width="40"
-          height="40"
-          style={{ maxWidth: "40px", height: "auto" }}
-          className="rounded-full xl:mr-2"
-        />
-        <div className="leading-5 hidden xl:inline">
-          <h3 className="font-bold">Tarek Elkanaria</h3>
-          <p className="text-gray-500">@ElkanariaTarek</p>
-        </div>
-        <BsThreeDots className="text-2xl xl:ml-8 hidden xl:inline-flex" />
-      </div>
+      <SideBarActions />
+      <MiniProfile />
     </aside>
   );
 }

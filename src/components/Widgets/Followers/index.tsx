@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { FollowerProfile } from "@/types";
+import type { FollowerProfile } from "@/types";
 import Follower from "./Follower";
 
 type Props = {

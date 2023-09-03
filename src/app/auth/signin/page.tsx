@@ -9,12 +9,11 @@ export default async function Signin() {
       <Image
         src="https://www.techbooky.com/wp-content/uploads/2021/07/4859E08D-388B-4475-9FCC-C05914CC654A.png"
         alt="Twitter banner"
-        width={448}
+        width={405}
         height={324}
         placeholder="blur"
         blurDataURL="https://www.techbooky.com/wp-content/uploads/2021/07/4859E08D-388B-4475-9FCC-C05914CC654A.png"
-        style={{ maxHeight: "324px", width: "auto" }}
-        className="hidden md:inline-flex rotate-6 object-cover"
+        className="hidden md:inline-flex rotate-6 object-cover max-h-[324px] w-auto"
       />
       <section className="flex flex-col items-center">
         {/* eslint-disable-next-line @next/next/no-img-element */}

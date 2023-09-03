@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { RetrievedPostType } from "@/types";
+import type { RetrievedPostType } from "@/types";
 import { BiDotsHorizontalRounded, BiBarChart } from "react-icons/bi";
 import { HiOutlineTrash, HiOutlineShare } from "react-icons/hi";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";

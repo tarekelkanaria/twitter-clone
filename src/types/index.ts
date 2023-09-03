@@ -1,10 +1,11 @@
-import { IconType } from "react-icons/lib/esm/iconBase";
-
+import type { IconType } from "react-icons";
+import type { Session } from "next-auth";
 export interface MenuItemType {
   id: string;
   text: string;
   Icon: IconType;
 }
+
 export interface MenuItemPropsType extends MenuItemType {
   active: boolean;
 }
@@ -32,7 +33,12 @@ export type FollowerProfile = {
   };
 };
 
-export interface RetrievedPostType {
+export type ProvidersProps = {
+  session: Session | null;
+  children: React.ReactNode;
+};
+
+export type RetrievedPostType = {
   id: string;
   name: string;
   userName: string;
@@ -40,4 +46,4 @@ export interface RetrievedPostType {
   postText: string;
   postImg: string;
   timestamp: string;
-}
+};
