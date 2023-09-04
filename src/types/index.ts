@@ -1,5 +1,6 @@
 import type { IconType } from "react-icons";
 import type { Session } from "next-auth";
+import { Timestamp } from "firebase/firestore";
 export interface MenuItemType {
   id: string;
   text: string;
@@ -38,12 +39,19 @@ export type ProvidersProps = {
   children: React.ReactNode;
 };
 
-export type RetrievedPostType = {
-  id: string;
+export interface UploadedPost {
   name: string;
   userName: string;
   userImg: string;
   postText: string;
-  postImg: string;
-  timestamp: string;
+  postImg: string | null;
+}
+
+export interface RetrievedPostType extends UploadedPost {
+  id: string;
+  timestamp: Timestamp;
+}
+
+export type PostTimeProps = {
+  time: Date;
 };

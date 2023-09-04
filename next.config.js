@@ -1,5 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    serverActions: true,
+    serverActionsBodySizeLimit: "10mb",
+  },
   images: {
     remotePatterns: [
       {
@@ -22,14 +26,8 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "avatars.githubusercontent.com",
-        pathname: "/**/*",
-        port: "",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-        pathname: "/*",
+        hostname: "firebasestorage.googleapis.com",
+        pathname: "/v0/b/**/**/*",
         port: "",
       },
     ],

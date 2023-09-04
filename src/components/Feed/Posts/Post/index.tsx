@@ -4,6 +4,7 @@ import { BiDotsHorizontalRounded, BiBarChart } from "react-icons/bi";
 import { HiOutlineTrash, HiOutlineShare } from "react-icons/hi";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import { AiOutlineHeart } from "react-icons/ai";
+import PostTime from "./PostTime";
 
 export default function Post({
   name,
@@ -20,8 +21,7 @@ export default function Post({
         alt={name}
         width={44}
         height={44}
-        style={{ maxWidth: "44px", height: "auto" }}
-        className="rounded-full self-start"
+        className="rounded-full self-start max-w-[44px] h-auto"
       />
       <div className="flex-grow">
         <header className="flex justify-between items-center mb-2">
@@ -32,24 +32,24 @@ export default function Post({
             <h3 className="text-sm sm:text-base text-gray-500">
               @{userName} -
             </h3>
-            <h3 className="text-sm sm:text-base text-gray-500 hover:underline transition-colors duration-150">
-              {timestamp}
-            </h3>
+            <PostTime time={timestamp.toDate()} />
           </div>
           <BiDotsHorizontalRounded className="post-icon text-gray-500 hover:bg-sky-100 hover:text-sky-500" />
         </header>
         <p className="text-sm sm:text-base mb-2 text-gray-800">{postText}</p>
-        <div className="relative w-full min-h-[300px] lg:max-h-[600px] mb-2">
-          <Image
-            src={postImg}
-            alt={postText}
-            fill
-            sizes="(max-width: 639px) 96%, (min-width: 640px) 100%"
-            placeholder="blur"
-            blurDataURL={postImg}
-            className="object-cover object-center rounded-2xl mr-2"
-          />
-        </div>
+        {postImg && (
+          <div className="relative w-full min-h-[300px] lg:max-h-[600px] mb-2">
+            <Image
+              src={postImg}
+              alt={postText}
+              fill
+              sizes="(max-width: 639px) 96%, (min-width: 640px) 100%"
+              placeholder="blur"
+              blurDataURL={postImg}
+              className="object-cover object-center rounded-2xl mr-2"
+            />
+          </div>
+        )}
         <footer className="flex justify-around items-center text-gray-500">
           <HiOutlineChatBubbleOvalLeft className="post-icon hover:bg-sky-100 hover:text-sky-600" />
           <AiOutlineHeart className="post-icon hover:bg-rose-100 hover:text-rose-600" />
