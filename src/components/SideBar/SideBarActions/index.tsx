@@ -10,11 +10,11 @@ const SideBarActions = () => {
         <>
           <button
             type="button"
-            className="w-56 h-12 hidden xl:inline main-btn mb-1"
+            className="w-56 h-12 hidden xl:inline main-btn mb-2"
           >
             Post
           </button>
-          <div className="hidden xl:block">
+          <div className="hidden xl:block xl:ml-10">
             <button
               type="button"
               onClick={() => signOut()}

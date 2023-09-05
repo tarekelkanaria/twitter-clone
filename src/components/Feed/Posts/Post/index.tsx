@@ -1,12 +1,16 @@
+import getLikes from "@/firebase/get-likes";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Image from "next/image";
 import type { RetrievedPostType } from "@/types";
 import { BiDotsHorizontalRounded, BiBarChart } from "react-icons/bi";
 import { HiOutlineTrash, HiOutlineShare } from "react-icons/hi";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
-import { AiOutlineHeart } from "react-icons/ai";
+import Like from "./Like";
 import PostTime from "./PostTime";
 
-export default function Post({
+export default async function Post({
+  id,
   name,
   userName,
   userImg,
@@ -14,6 +18,8 @@ export default function Post({
   postImg,
   timestamp,
 }: RetrievedPostType) {
+  const likes = await getLikes(id);
+  const session = await getServerSession(authOptions);
   return (
     <article className="flex p-3 space-x-4 cursor-pointer border-b border-gray-200 mb-2">
       <Image
@@ -50,13 +56,20 @@ export default function Post({
             />
           </div>
         )}
-        <footer className="flex justify-around items-center text-gray-500">
-          <HiOutlineChatBubbleOvalLeft className="post-icon hover:bg-sky-100 hover:text-sky-600" />
-          <AiOutlineHeart className="post-icon hover:bg-rose-100 hover:text-rose-600" />
-          <HiOutlineShare className="post-icon hover:bg-green-100 hover:text-green-600" />
-          <HiOutlineTrash className="post-icon hover:text-sky-600 hover:bg-sky-100" />
-          <BiBarChart className="post-icon hover:bg-sky-100 hover:text-sky-600" />
-        </footer>
+        {session && (
+          <footer className="flex justify-around items-center text-gray-500">
+            <HiOutlineChatBubbleOvalLeft className="post-icon hover:bg-sky-100 hover:text-sky-600" />
+            <Like
+              postId={id}
+              allLikes={likes}
+              userName={userName}
+              userImg={userImg}
+            />
+            <HiOutlineShare className="post-icon hover:bg-green-100 hover:text-green-600" />
+            <HiOutlineTrash className="post-icon hover:text-sky-600 hover:bg-sky-100" />
+            <BiBarChart className="post-icon hover:bg-sky-100 hover:text-sky-600" />
+          </footer>
+        )}
       </div>
     </article>
   );

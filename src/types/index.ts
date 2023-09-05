@@ -1,6 +1,7 @@
 import type { IconType } from "react-icons";
 import type { Session } from "next-auth";
-import { Timestamp } from "firebase/firestore";
+import type { Timestamp } from "firebase/firestore";
+
 export interface MenuItemType {
   id: string;
   text: string;
@@ -47,11 +48,32 @@ export interface UploadedPost {
   postImg: string | null;
 }
 
+export type UploadedLike = {
+  id: string;
+  userId: string;
+  userName: string;
+  userImg: string;
+  hasLiked: boolean;
+};
+
 export interface RetrievedPostType extends UploadedPost {
   id: string;
   timestamp: Timestamp;
 }
 
+export type RetrievedLike = {
+  id: string;
+  userName: string;
+  userImg: string;
+};
+
 export type PostTimeProps = {
   time: Date;
+};
+
+export type LikeProps = {
+  postId: string;
+  allLikes: RetrievedLike[];
+  userName: string;
+  userImg: string;
 };
