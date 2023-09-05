@@ -34,6 +34,7 @@ const FormSection = () => {
     else setPending(true);
 
     await sendPost({
+      uid: session?.user.uid!,
       name: session?.user.name!,
       userName: session?.user.userName!,
       userImg: session?.user.image!,

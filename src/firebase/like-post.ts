@@ -3,7 +3,7 @@
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
 import { db } from ".";
 import { revalidatePath } from "next/cache";
-import { UploadedLike } from "@/types";
+import { UploadedLikeType } from "@/types";
 
 export default async function likePost({
   id,
@@ -11,7 +11,7 @@ export default async function likePost({
   userName,
   userImg,
   hasLiked,
-}: UploadedLike) {
+}: UploadedLikeType) {
   if (hasLiked) {
     await deleteDoc(doc(db, "posts", id, "likes", userId));
   } else {

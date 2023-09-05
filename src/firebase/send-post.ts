@@ -11,7 +11,7 @@ import {
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 import { db, storage } from ".";
 import { revalidatePath } from "next/cache";
-import type { UploadedPost } from "@/types";
+import type { UploadedPostType } from "@/types";
 
 export async function getPostsCount() {
   const snapshot = await getCountFromServer(collection(db, "posts"));
@@ -20,14 +20,16 @@ export async function getPostsCount() {
 }
 
 export async function sendPost({
+  uid,
   name,
   userName,
   userImg,
   postText,
   postImg,
-}: UploadedPost) {
+}: UploadedPostType) {
   try {
     const docRef = await addDoc(collection(db, "posts"), {
+      uid,
       name,
       userName,
       userImg,

@@ -2,13 +2,21 @@ import type { IconType } from "react-icons";
 import type { Session } from "next-auth";
 import type { Timestamp } from "firebase/firestore";
 
+export interface ParentProps {
+  children: React.ReactNode;
+}
+
+export interface ProvidersProps extends ParentProps {
+  session: Session | null;
+}
+
 export interface MenuItemType {
   id: string;
   text: string;
   Icon: IconType;
 }
 
-export interface MenuItemPropsType extends MenuItemType {
+export interface MenuItemProps extends MenuItemType {
   active: boolean;
 }
 
@@ -19,6 +27,11 @@ export type NewsItemType = {
   source: {
     name: string;
   };
+};
+
+export type NewsProps = {
+  items: NewsItemType[];
+  count: number;
 };
 
 export type FollowerProfile = {
@@ -35,12 +48,12 @@ export type FollowerProfile = {
   };
 };
 
-export type ProvidersProps = {
-  session: Session | null;
-  children: React.ReactNode;
+export type FollowersProps = {
+  items: FollowerProfile[];
 };
 
-export interface UploadedPost {
+export interface UploadedPostType {
+  uid: string;
   name: string;
   userName: string;
   userImg: string;
@@ -48,7 +61,7 @@ export interface UploadedPost {
   postImg: string | null;
 }
 
-export type UploadedLike = {
+export type UploadedLikeType = {
   id: string;
   userId: string;
   userName: string;
@@ -56,12 +69,12 @@ export type UploadedLike = {
   hasLiked: boolean;
 };
 
-export interface RetrievedPostType extends UploadedPost {
+export interface RetrievedPostType extends UploadedPostType {
   id: string;
   timestamp: Timestamp;
 }
 
-export type RetrievedLike = {
+export type RetrievedLikeType = {
   id: string;
   userName: string;
   userImg: string;
@@ -73,7 +86,12 @@ export type PostTimeProps = {
 
 export type LikeProps = {
   postId: string;
-  allLikes: RetrievedLike[];
+  allLikes: RetrievedLikeType[];
   userName: string;
   userImg: string;
+};
+
+export type TrashProps = {
+  postId: string;
+  postImg: string | null;
 };

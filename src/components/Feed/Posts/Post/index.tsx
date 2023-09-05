@@ -4,13 +4,15 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Image from "next/image";
 import type { RetrievedPostType } from "@/types";
 import { BiDotsHorizontalRounded, BiBarChart } from "react-icons/bi";
-import { HiOutlineTrash, HiOutlineShare } from "react-icons/hi";
+import { HiOutlineShare } from "react-icons/hi";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 import Like from "./Like";
 import PostTime from "./PostTime";
+import Trash from "./Trash";
 
 export default async function Post({
   id,
+  uid,
   name,
   userName,
   userImg,
@@ -66,7 +68,9 @@ export default async function Post({
               userImg={userImg}
             />
             <HiOutlineShare className="post-icon hover:bg-green-100 hover:text-green-600" />
-            <HiOutlineTrash className="post-icon hover:text-sky-600 hover:bg-sky-100" />
+            {session.user.uid === uid && (
+              <Trash postId={id} postImg={postImg} />
+            )}
             <BiBarChart className="post-icon hover:bg-sky-100 hover:text-sky-600" />
           </footer>
         )}

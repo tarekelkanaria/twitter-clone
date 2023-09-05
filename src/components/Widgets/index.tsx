@@ -10,7 +10,10 @@ export default async function Widgets() {
   if (!newsResponse.ok) throw new Error("Error has occurred");
 
   const news = await newsResponse.json();
-  const { articles }: { articles: NewsItemType[] } = news;
+  const {
+    articles,
+    totalResults,
+  }: { articles: NewsItemType[]; totalResults: number } = news;
 
   const followersResponse = await fetch(
     "https://randomuser.me/api/?results=30&inc=name,login,picture"
@@ -24,7 +27,7 @@ export default async function Widgets() {
   return (
     <aside className="ml-8 w-[400px] xl:w-[500px] relative space-y-5 hidden lg:block">
       <SearchBar />
-      <News items={articles} />
+      <News items={articles} count={totalResults} />
       <Followers items={results} />
     </aside>
   );

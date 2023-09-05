@@ -1,13 +1,13 @@
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
-import type { MenuItemPropsType } from "@/types";
+import type { MenuItemProps } from "@/types";
 
 export default async function MenuItem({
   id,
   text,
   Icon,
   active,
-}: MenuItemPropsType) {
+}: MenuItemProps) {
   const session = await getServerSession(authOptions);
   return (
     <>

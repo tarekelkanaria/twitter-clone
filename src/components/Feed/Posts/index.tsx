@@ -1,4 +1,6 @@
 import getPost from "@/firebase/get-post";
+import AnimateClient from "@/Providers/AnimateClient";
+import MotionClient from "@/Providers/MotionClient";
 import Post from "./Post";
 
 export default async function Posts() {
@@ -7,9 +9,13 @@ export default async function Posts() {
     <>
       {posts && (
         <section>
-          {posts.map((post) => (
-            <Post key={post.id} {...post} />
-          ))}
+          <AnimateClient>
+            {posts.map((post) => (
+              <MotionClient key={post.id}>
+                <Post {...post} />
+              </MotionClient>
+            ))}
+          </AnimateClient>
         </section>
       )}
     </>
