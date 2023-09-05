@@ -10,7 +10,7 @@ import Like from "./Like";
 import PostTime from "./PostTime";
 import Trash from "./Trash";
 
-export default async function Post({
+export default async function IndividualPost({
   id,
   uid,
   name,

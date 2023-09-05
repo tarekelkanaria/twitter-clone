@@ -24,7 +24,7 @@ const menuList: MenuItemType[] = [
   },
 ];
 
-export default function SideBar() {
+export default function SideBarContainer() {
   return (
     <aside className="hidden fixed h-full p-2 sm:flex sm:flex-col sm:items-center xl:items-start xl:ml-6">
       <div className="hover-effect p-0 hover:bg-blue-100 xl:px-1 mb-4">

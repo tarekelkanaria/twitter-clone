@@ -6,7 +6,7 @@ export interface ParentProps {
   children: React.ReactNode;
 }
 
-export interface ProvidersProps extends ParentProps {
+export interface ClientProvidersProps extends ParentProps {
   session: Session | null;
 }
 
@@ -29,7 +29,7 @@ export type NewsItemType = {
   };
 };
 
-export type NewsProps = {
+export type NewsListProps = {
   items: NewsItemType[];
   count: number;
 };
@@ -48,7 +48,7 @@ export type FollowerProfile = {
   };
 };
 
-export type FollowersProps = {
+export type FollowersListProps = {
   items: FollowerProfile[];
 };
 

@@ -3,10 +3,10 @@
 import { useState } from "react";
 import AnimateClient from "@/Providers/AnimateClient";
 import MotionClient from "@/Providers/MotionClient";
-import type { FollowersProps } from "@/types";
+import type { FollowersListProps } from "@/types";
 import Follower from "./Follower";
 
-const Followers = ({ items }: FollowersProps) => {
+const FollowersList = ({ items }: FollowersListProps) => {
   const [followersCount, setFollowersCount] = useState<number>(3);
   const showedFollowers = items.slice(0, followersCount);
 
@@ -33,4 +33,4 @@ const Followers = ({ items }: FollowersProps) => {
   );
 };
 
-export default Followers;
+export default FollowersList;

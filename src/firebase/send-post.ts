@@ -9,7 +9,7 @@ import {
   updateDoc,
 } from "firebase/firestore";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
-import { db, storage } from ".";
+import { db, storage } from "./config";
 import { revalidatePath } from "next/cache";
 import type { UploadedPostType } from "@/types";
 

@@ -1,13 +1,13 @@
 import FormSection from "./FormSection";
 import Header from "./Header";
-import Posts from "./Posts";
+import PostsList from "./Posts/PostsList";
 
-export default function Feed() {
+export default function FeedContainer() {
   return (
     <>
       <Header />
       <FormSection />
-      <Posts />
+      <PostsList />
     </>
   );
 }

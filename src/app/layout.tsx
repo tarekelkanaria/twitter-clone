@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
-import Providers from "@/Providers";
+import ClientProviders from "@/Providers/ClientProviders";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} flex min-h-screen mx-auto`}>
-        <Providers session={session}>{children}</Providers>
+        <ClientProviders session={session}>{children}</ClientProviders>
       </body>
     </html>
   );

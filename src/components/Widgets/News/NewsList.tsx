@@ -3,10 +3,10 @@
 import { useState } from "react";
 import AnimateClient from "@/Providers/AnimateClient";
 import MotionClient from "@/Providers/MotionClient";
-import type { NewsProps } from "@/types";
+import type { NewsListProps } from "@/types";
 import NewsItem from "./NewsItem";
 
-const News = ({ items, count }: NewsProps) => {
+const NewsList = ({ items, count }: NewsListProps) => {
   const [articlesCount, setArticlesCount] = useState<number>(3);
   const showedItems = items.slice(0, articlesCount);
 
@@ -33,4 +33,4 @@ const News = ({ items, count }: NewsProps) => {
   );
 };
 
-export default News;
+export default NewsList;

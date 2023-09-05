@@ -1,9 +1,9 @@
 import type { FollowerProfile, NewsItemType } from "@/types";
 import SearchBar from "./SearchBar";
-import News from "./News";
-import Followers from "./Followers";
+import NewsList from "./News/NewsList";
+import FollowersList from "./Followers/FollowersList";
 
-export default async function Widgets() {
+export default async function WidgetsContainer() {
   const newsResponse = await fetch(
     "https://saurav.tech/NewsAPI/top-headlines/category/technology/us.json"
   );
@@ -27,8 +27,8 @@ export default async function Widgets() {
   return (
     <aside className="ml-8 w-[400px] xl:w-[500px] relative space-y-5 hidden lg:block">
       <SearchBar />
-      <News items={articles} count={totalResults} />
-      <Followers items={results} />
+      <NewsList items={articles} count={totalResults} />
+      <FollowersList items={results} />
     </aside>
   );
 }

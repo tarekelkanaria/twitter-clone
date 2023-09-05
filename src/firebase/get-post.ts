@@ -1,5 +1,5 @@
 import { collection, getDocs, orderBy, query } from "firebase/firestore";
-import { db } from ".";
+import { db } from "./config";
 import { RetrievedPostType } from "@/types";
 
 export default async function getPost() {

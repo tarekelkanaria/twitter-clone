@@ -1,7 +1,7 @@
 "use server";
 
 import { deleteDoc, doc, setDoc } from "firebase/firestore";
-import { db } from ".";
+import { db } from "./config";
 import { revalidatePath } from "next/cache";
 import { UploadedLikeType } from "@/types";
 

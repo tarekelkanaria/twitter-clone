@@ -1,5 +1,5 @@
 import { collection, getDocs } from "firebase/firestore";
-import { db } from ".";
+import { db } from "./config";
 import { RetrievedLikeType } from "@/types";
 
 export default async function getLikes(id: string) {

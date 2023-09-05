@@ -1,9 +1,9 @@
 import getPost from "@/firebase/get-post";
 import AnimateClient from "@/Providers/AnimateClient";
 import MotionClient from "@/Providers/MotionClient";
-import Post from "./Post";
+import IndividualPost from "./Post/IndividualPost";
 
-export default async function Posts() {
+export default async function PostsList() {
   const posts = await getPost();
   return (
     <>
@@ -12,7 +12,7 @@ export default async function Posts() {
           <AnimateClient>
             {posts.map((post) => (
               <MotionClient key={post.id}>
-                <Post {...post} />
+                <IndividualPost {...post} />
               </MotionClient>
             ))}
           </AnimateClient>
