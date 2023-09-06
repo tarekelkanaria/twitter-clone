@@ -56,19 +56,15 @@ const FormSection = () => {
             alt={session?.user?.name!}
             width={44}
             height={44}
-            style={{ maxWidth: "44px", height: "auto" }}
-            className="rounded-full cursor-pointer hover:brightness-95 transition-colors duration-150 self-start"
+            className="user-image"
           />
-          <form
-            onSubmit={uploadPost}
-            className="flex-grow divide-y divide-gray-200"
-          >
+          <form onSubmit={uploadPost} className="user-form">
             <textarea
               rows={2}
               placeholder="What's happening"
               value={postText}
               onChange={(e) => setPostText(e.target.value)}
-              className="w-full min-h-[50px] border-none text-gray-700 focus:ring-0 text-lg placeholder-gray-700 tracking-wide"
+              className="user-text"
             />
             {selectedFile && (
               <div className="bg-slate-200 w-full relative pt-1 pb-1">
@@ -105,7 +101,7 @@ const FormSection = () => {
               <button
                 type="submit"
                 disabled={(!postText.trim() && !selectedFile) || pending}
-                className="px-4 py-1.5 min-w-[68px] max-h-[36px] main-btn text-base disabled:opacity-50 disabled:cursor-not-allowed"
+                className="form-btn"
               >
                 <ClipLoader color="#1e40af" size={20} loading={pending} />
                 {!pending && "Post"}

@@ -14,8 +14,7 @@ export default async function MiniProfile() {
             alt={session?.user?.name!}
             width="40"
             height="40"
-            style={{ maxWidth: "40px", height: "auto" }}
-            className="rounded-full xl:mr-2"
+            className="max-w-[40px] h-auto rounded-full xl:mr-2"
           />
           <div className="leading-5 hidden xl:inline">
             <h3 className="font-bold">{session?.user?.name}</h3>

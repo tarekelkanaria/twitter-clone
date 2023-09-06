@@ -5,7 +5,7 @@ import { db } from "./config";
 import { revalidatePath } from "next/cache";
 import { UploadedLikeType } from "@/types";
 
-export default async function likePost({
+export default async function sendLike({
   id,
   userId,
   userName,

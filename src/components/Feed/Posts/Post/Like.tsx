@@ -1,6 +1,6 @@
 "use client";
 
-import likePost from "@/firebase/like-post";
+import sendLike from "@/firebase/send-like";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import type { LikeProps } from "@/types";
@@ -21,7 +21,7 @@ const Like = ({ postId, allLikes, userName, userImg }: LikeProps) => {
   const handleLike = async () => {
     if (loading) return;
     else setLoading(true);
-    await likePost({
+    await sendLike({
       id: postId,
       userId: session?.user.uid!,
       userName,
