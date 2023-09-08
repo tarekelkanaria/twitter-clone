@@ -9,13 +9,14 @@ export default async function Post({ params }: PostPageProps) {
   const { id } = params;
   const post = await getPost(id);
   const comments = await getComments(id);
+  const hasComments = comments.length > 0;
 
   return (
     <>
       {post && (
         <>
           <Header isInPost={true} />
-          <IndividualPost {...post} />
+          <IndividualPost {...post} hasComments={hasComments} />
           <CommentsList commentsList={comments} />
         </>
       )}

@@ -22,6 +22,7 @@ export default async function IndividualPost({
   postImg,
   timestamp,
   commentId,
+  hasComments,
 }: IndividualPostProps) {
   const likes = await getLikes(id, commentId);
   const session = await getServerSession(authOptions);
@@ -88,7 +89,12 @@ export default async function IndividualPost({
             />
             <HiOutlineShare className="post-icon hover:bg-green-100 hover:text-green-600" />
             {session.user.uid === uid && (
-              <Trash postId={id} postImg={postImg} commentId={commentId} />
+              <Trash
+                postId={id}
+                postImg={postImg}
+                commentId={commentId}
+                hasComments={hasComments}
+              />
             )}
             <BiBarChart className="post-icon hover:bg-sky-100 hover:text-sky-600" />
           </footer>

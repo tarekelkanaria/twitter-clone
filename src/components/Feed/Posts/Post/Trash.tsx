@@ -6,7 +6,7 @@ import { useRouter } from "next/navigation";
 import type { TrashProps } from "@/types";
 import { HiOutlineTrash } from "react-icons/hi";
 
-const Trash = ({ postId, postImg, commentId }: TrashProps) => {
+const Trash = ({ postId, postImg, commentId, hasComments }: TrashProps) => {
   const [deleteLoading, setDeleteLoading] = useState(false);
   const router = useRouter();
 
@@ -23,6 +23,7 @@ const Trash = ({ postId, postImg, commentId }: TrashProps) => {
         postId,
         postImg: postImg ? postImg : undefined,
         commentId,
+        hasComments,
       });
     }
     if (!commentId) router.push("/");

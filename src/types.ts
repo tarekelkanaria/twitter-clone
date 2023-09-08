@@ -76,12 +76,14 @@ export interface RetrievedPostType extends UploadedPostType {
 
 export interface IndividualPostProps extends RetrievedPostType {
   commentId?: string;
+  hasComments?: boolean;
 }
 
 export type DeletedPostType = {
   postId: string;
   postImg?: string;
   commentId?: string;
+  hasComments?: boolean;
 };
 
 export interface UploadedCommentType {
@@ -129,6 +131,7 @@ export type TrashProps = {
   postId: string;
   postImg: string | null;
   commentId?: string;
+  hasComments?: boolean;
 };
 
 export type CommentActionProps = {
