@@ -2,10 +2,10 @@
 
 import { setPostInfo, toggleCommentModal } from "@/redux/features/commentSlice";
 import { useAppDispatch } from "@/redux/store";
-import type { CommentProps } from "@/types";
+import type { CommentActionProps } from "@/types";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 
-const Comment = (props: CommentProps) => {
+const CommentAction = (props: CommentActionProps) => {
   const dispatch = useAppDispatch();
 
   const handleCommentModal = () => {
@@ -26,4 +26,4 @@ const Comment = (props: CommentProps) => {
   );
 };
 
-export default Comment;
+export default CommentAction;

@@ -11,14 +11,19 @@ export default async function sendLike({
   userName,
   userImg,
   hasLiked,
+  commentId,
 }: UploadedLikeType) {
+  let docRef = doc(db, "posts", id, "likes", userId);
+  if (commentId)
+    docRef = doc(db, "posts", id, "comments", commentId, "likes", userId);
   if (hasLiked) {
-    await deleteDoc(doc(db, "posts", id, "likes", userId));
+    await deleteDoc(docRef);
   } else {
-    await setDoc(doc(db, "posts", id, "likes", userId), {
+    await setDoc(docRef, {
       userName,
       userImg,
     });
   }
-  revalidatePath("/");
+  if (commentId) revalidatePath(`/posts/${id}`);
+  else revalidatePath("/");
 }

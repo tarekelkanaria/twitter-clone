@@ -5,7 +5,7 @@ import PostsList from "./Posts/PostsList";
 export default function FeedContainer() {
   return (
     <>
-      <Header />
+      <Header isInPost={false} />
       <FormSection />
       <PostsList />
     </>

@@ -7,6 +7,7 @@ import type { UploadedCommentType } from "@/types";
 
 export default async function sendComment({
   id,
+  uid,
   name,
   userName,
   userImg,
@@ -14,10 +15,11 @@ export default async function sendComment({
 }: UploadedCommentType) {
   await addDoc(collection(db, "posts", id, "comments"), {
     name,
+    uid,
     userName,
     userImg,
     text,
     timestamp: serverTimestamp(),
   });
-  revalidatePath(`/posts/${id}`);
+  revalidatePath(`/`);
 }

@@ -3,10 +3,16 @@
 import sendLike from "@/firebase/send-like";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import type { LikeProps } from "@/types";
+import type { LikeActionProps } from "@/types";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
-const Like = ({ postId, allLikes, userName, userImg }: LikeProps) => {
+const LikeAction = ({
+  postId,
+  allLikes,
+  userName,
+  userImg,
+  commentId,
+}: LikeActionProps) => {
   const [hasLiked, setHasLiked] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
@@ -27,6 +33,7 @@ const Like = ({ postId, allLikes, userName, userImg }: LikeProps) => {
       userName,
       userImg,
       hasLiked,
+      commentId,
     });
 
     setLoading(false);
@@ -58,4 +65,4 @@ const Like = ({ postId, allLikes, userName, userImg }: LikeProps) => {
   );
 };
 
-export default Like;
+export default LikeAction;

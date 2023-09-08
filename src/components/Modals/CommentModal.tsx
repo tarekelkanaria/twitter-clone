@@ -6,12 +6,12 @@ import { useAppDispatch, useAppSelector } from "@/redux/store";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Modal from "react-modal";
 import Moment from "react-moment";
-import Image from "next/image";
 import { ClipLoader } from "react-spinners";
 import { GrClose } from "react-icons/gr";
-import { HiOutlineEmojiHappy, HiOutlinePhotograph } from "react-icons/hi";
+import { HiOutlineEmojiHappy } from "react-icons/hi";
 
 const CommentModal = () => {
   const dispatch = useAppDispatch();
@@ -33,6 +33,7 @@ const CommentModal = () => {
 
     await sendComment({
       id: postInfo.postId,
+      uid: session?.user.uid!,
       name: session?.user.name!,
       userName: session?.user.userName!,
       userImg: session?.user.image!,
@@ -94,36 +95,8 @@ const CommentModal = () => {
               onChange={(e) => setCommentText(e.target.value)}
               className="user-text"
             />
-            {/* {selectedFile && (
-              <div className="bg-slate-200 w-full relative pt-1 pb-1">
-                <GrClose
-                  onClick={() => setSelectedFile(undefined)}
-                  className="text-3xl absolute top-1 left-1 p-1 rounded-full cursor-pointer bg-gray-50 hover:bg-gray-200 transition-colors duration-200"
-                /> */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            {/* <img
-                  src={selectedFile}
-                  alt="Post image"
-                  className={`${
-                    pending && "animate-pulse"
-                  } w-full max-h-80 object-contain mb-1`}
-                /> 
-              /</div> 
-                )}  */}
             <div className="flex justify-between items-center pt-2.5">
-              <div className="flex">
-                <div
-                  className="m-1"
-                  // onClick={() => filePickerRef.current!.click()}
-                >
-                  <HiOutlinePhotograph className="form-icon" />
-                  {/* <input
-                    type="file"
-                    hidden
-                    ref={filePickerRef}
-                    onChange={extractImgDataUrl}
-                  /> */}
-                </div>
+              <div className=" m-1">
                 <HiOutlineEmojiHappy className="form-icon" />
               </div>
               <button

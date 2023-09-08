@@ -15,6 +15,9 @@ export interface ClientProvidersProps extends ParentProps {
   session: Session | null;
 }
 
+export type FeedHeaderProps = {
+  isInPost: boolean;
+};
 export interface MenuItemType {
   id: string;
   text: string;
@@ -66,26 +69,43 @@ export interface UploadedPostType {
   postImg: string | null;
 }
 
+export interface RetrievedPostType extends UploadedPostType {
+  id: string;
+  timestamp: Timestamp;
+}
+
+export interface IndividualPostProps extends RetrievedPostType {
+  commentId?: string;
+}
+
+export type DeletedPostType = {
+  postId: string;
+  postImg?: string;
+  commentId?: string;
+};
+
+export interface UploadedCommentType {
+  id: string;
+  uid: string;
+  name: string;
+  userName: string;
+  userImg: string;
+  text: string;
+}
+
+export interface RetrievedCommentType extends UploadedCommentType {
+  postId: string;
+  timestamp: Timestamp;
+}
+
 export type UploadedLikeType = {
   id: string;
   userId: string;
   userName: string;
   userImg: string;
   hasLiked: boolean;
+  commentId?: string;
 };
-
-export type UploadedCommentType = {
-  id: string;
-  name: string;
-  userName: string;
-  userImg: string;
-  text: string;
-};
-
-export interface RetrievedPostType extends UploadedPostType {
-  id: string;
-  timestamp: Timestamp;
-}
 
 export type RetrievedLikeType = {
   id: string;
@@ -97,19 +117,21 @@ export type PostTimeProps = {
   time: Date;
 };
 
-export type LikeProps = {
+export type LikeActionProps = {
   postId: string;
   allLikes: RetrievedLikeType[];
   userName: string;
   userImg: string;
+  commentId?: string;
 };
 
 export type TrashProps = {
   postId: string;
   postImg: string | null;
+  commentId?: string;
 };
 
-export type CommentProps = {
+export type CommentActionProps = {
   postId: string;
   name: string;
   userName: string;
@@ -133,5 +155,15 @@ export type CommentSliceState = {
 
 export type PostInfoAction = {
   type: string;
-  payload: CommentProps;
+  payload: CommentActionProps;
+};
+
+export type PostPageProps = {
+  params: {
+    id: string;
+  };
+};
+
+export type CommentsListProps = {
+  commentsList: RetrievedCommentType[];
 };

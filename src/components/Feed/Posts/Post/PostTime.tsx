@@ -5,7 +5,7 @@ import type { PostTimeProps } from "@/types";
 
 const PostTime = ({ time }: PostTimeProps) => {
   return (
-    <Moment className="time" fromNow>
+    <Moment className="time cursor-pointer" fromNow>
       {time}
     </Moment>
   );

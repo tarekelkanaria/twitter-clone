@@ -1,10 +1,10 @@
-import getPost from "@/firebase/get-post";
+import getPosts from "@/firebase/get-posts";
 import AnimateClient from "@/Providers/AnimateClient";
 import MotionClient from "@/Providers/MotionClient";
 import IndividualPost from "./Post/IndividualPost";
 
 export default async function PostsList() {
-  const posts = await getPost();
+  const posts = await getPosts();
 
   return (
     <>
