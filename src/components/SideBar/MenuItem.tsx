@@ -13,25 +13,15 @@ export default async function MenuItem({
     <>
       {parseInt(id) > 2 ? (
         session && (
-          <div className="hover-effect text-gray-700 flex items-center justify-center xl:justify-start xl:space-x-3 ">
+          <div className="menuItem-container">
             <Icon className="text-3xl" />
-            <h3
-              className={`text-lg hidden xl:inline-flex ${
-                active && "font-bold"
-              }`}
-            >
-              {text}
-            </h3>
+            <h3 className={`menuItem-text ${active && "font-bold"}`}>{text}</h3>
           </div>
         )
       ) : (
-        <div className="hover-effect text-gray-700 flex items-center justify-center xl:justify-start xl:space-x-3 ">
+        <div className="menuItem-container">
           <Icon className="text-3xl" />
-          <h3
-            className={`text-lg hidden xl:inline-flex ${active && "font-bold"}`}
-          >
-            {text}
-          </h3>
+          <h3 className={`menuItem-text ${active && "font-bold"}`}>{text}</h3>
         </div>
       )}
     </>

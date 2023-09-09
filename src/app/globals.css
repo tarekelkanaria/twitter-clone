@@ -12,6 +12,12 @@
   .main-btn {
     @apply bg-blue-400 text-white text-lg font-bold rounded-full shadow-md hover:brightness-95 transition-colors duration-150;
   }
+  .menuItem-container {
+    @apply hover-effect text-gray-700 flex items-center justify-center xl:justify-start xl:space-x-3;
+  }
+  .menuItem-text {
+    @apply text-lg hidden xl:inline-flex;
+  }
   .form-icon {
     @apply hover-effect p-2 text-3xl text-sky-500 hover:bg-sky-100;
   }

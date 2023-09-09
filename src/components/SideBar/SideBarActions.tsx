@@ -1,37 +1,26 @@
 "use client";
 
 import { useSession, signIn, signOut } from "next-auth/react";
+import { GoSignOut, GoSignIn } from "react-icons/go";
 
 const SideBarActions = () => {
   const { data: session } = useSession();
   return (
     <>
       {session ? (
-        <>
-          <button
-            type="button"
-            className="w-56 h-12 hidden xl:inline main-btn mb-2"
-          >
-            Post
+        <div className="menuItem-container" onClick={() => signOut()}>
+          <GoSignOut className="text-3xl" />
+          <button type="button" className="menuItem-text">
+            Sign out
           </button>
-          <div className="hidden xl:block xl:ml-10">
-            <button
-              type="button"
-              onClick={() => signOut()}
-              className="w-36 h-12 main-btn"
-            >
-              Sign out
-            </button>
-          </div>
-        </>
+        </div>
       ) : (
-        <button
-          type="button"
-          onClick={() => signIn()}
-          className="w-36 h-12 hidden xl:inline main-btn"
-        >
-          Sign in
-        </button>
+        <div className="menuItem-container" onClick={() => signIn()}>
+          <GoSignIn className="text-3xl" />
+          <button type="button" className="menuItem-text">
+            Sign in
+          </button>
+        </div>
       )}
     </>
   );

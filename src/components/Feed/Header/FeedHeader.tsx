@@ -2,8 +2,9 @@ import Link from "next/link";
 import type { FeedHeaderProps } from "@/types";
 import { HiOutlineSparkles } from "react-icons/hi";
 import { HiArrowLeft } from "react-icons/hi";
+import HeaderActions from "./HeaderActions";
 
-export default function Header({ isInPost }: FeedHeaderProps) {
+export default function FeedHeader({ isInPost }: FeedHeaderProps) {
   return (
     <header
       className={`flex items-center py-2 px-3 ${
@@ -20,7 +21,8 @@ export default function Header({ isInPost }: FeedHeaderProps) {
       </h2>
       {!isInPost && (
         <div className="header-icon">
-          <HiOutlineSparkles className="text-2xl" />
+          <HiOutlineSparkles className="hidden sm:inline text-2xl" />
+          <HeaderActions />
         </div>
       )}
     </header>

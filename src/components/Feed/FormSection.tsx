@@ -50,7 +50,7 @@ const FormSection = () => {
   return (
     <>
       {session && (
-        <section className="flex border-b border-gray-200 space-x-3 p-3">
+        <section className="flex flex-col p-1 gap-y-3 border-b border-gray-200 sm:flex-row sm:gap-y-0 sm:space-x-3 sm:p-3">
           <Image
             src={session?.user?.image!}
             alt={session?.user?.name!}

@@ -1,3 +1,5 @@
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import Image from "next/image";
 import type { MenuItemType } from "@/types";
 import { BiSolidHomeCircle, BiSearch } from "react-icons/bi";
@@ -24,7 +26,8 @@ const menuList: MenuItemType[] = [
   },
 ];
 
-export default function SideBarContainer() {
+export default async function SideBarContainer() {
+  const session = await getServerSession(authOptions);
   return (
     <aside className="hidden fixed h-full p-2 sm:flex sm:flex-col sm:items-center xl:items-start xl:ml-6">
       <div className="hover-effect p-0 hover:bg-blue-100 xl:px-1 mb-4">
@@ -45,8 +48,16 @@ export default function SideBarContainer() {
             active={item.text === "Home" ? true : false}
           />
         ))}
+        <SideBarActions />
       </nav>
-      <SideBarActions />
+      {session && (
+        <button
+          type="button"
+          className="w-56 h-12 hidden xl:inline main-btn mb-2"
+        >
+          Post
+        </button>
+      )}
       <MiniProfile />
     </aside>
   );

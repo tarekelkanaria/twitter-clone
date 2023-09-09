@@ -31,7 +31,7 @@ export default async function IndividualPost({
     <article
       className={`${
         commentId && "pl-20"
-      } flex p-3 space-x-4 border-b border-gray-200 mb-2`}
+      } flex flex-col p-1 mb-2 gap-y-2 border-b border-gray-200 sm:gap-y-0 sm:flex-row sm:p-3 sm:space-x-4`}
     >
       <Image
         src={userImg}
@@ -42,7 +42,7 @@ export default async function IndividualPost({
       />
       <div className="flex-grow">
         <header className="flex justify-between items-center mb-2">
-          <div className="flex space-x-1 whitespace-nowrap select-none">
+          <div className="flex flex-col sm:flex-row gap-y-1 sm:gap-y-0 sm:space-x-1 whitespace-nowrap select-none">
             <h2 className="user-name cursor-pointer">{name}</h2>
             <h3 className="userName">@{userName} -</h3>
             <PostTime time={timestamp?.toDate()} />
@@ -68,7 +68,7 @@ export default async function IndividualPost({
           </Link>
         )}
         {session && (
-          <footer className="flex justify-around items-center text-gray-500">
+          <footer className="flex flex-wrap sm:flex-nowrap justify-around items-center text-gray-500">
             {!commentId && (
               <CommentAction
                 postId={id}
