@@ -9,8 +9,29 @@ import type { DeletedPostType } from "@/types";
 const deleteNestedCollections = async (
   docPath: string,
   docId: string,
-  subDoc?: string
+  subDoc?: string,
+  subDocPath?: string
 ) => {
+  // Delete likes on specific comment on post
+  if (subDocPath) {
+    const commentSnapshot = await getDocs(
+      collection(db, docPath, docId, subDoc!)
+    );
+    if (commentSnapshot.docs) {
+      commentSnapshot.docs.forEach(async () => {
+        const commentLikesSnapshot = await getDocs(
+          collection(db, docPath, docId, subDoc!, subDocPath, "likes")
+        );
+        if (commentLikesSnapshot.docs)
+          commentLikesSnapshot.docs.forEach(async (doc) => {
+            await deleteDoc(doc.ref);
+          });
+      });
+    }
+    return;
+  }
+
+  // Delete all comments and likes on comments for post
   const commentsSnapshot = await getDocs(
     collection(db, docPath, docId, "comments")
   );
@@ -27,6 +48,7 @@ const deleteNestedCollections = async (
     });
   }
 
+  // Delete all likes for post
   const likesSnapshot = await getDocs(collection(db, docPath, docId, "likes"));
 
   if (likesSnapshot.docs) {
@@ -43,7 +65,7 @@ export default async function deletePost({
   hasComments,
 }: DeletedPostType) {
   if (commentId) {
-    await deleteNestedCollections("posts", postId, "comments");
+    await deleteNestedCollections("posts", postId, "comments", commentId);
     await deleteDoc(doc(db, "posts", postId, "comments", commentId));
     revalidatePath(`/posts/${postId}`);
     return;
@@ -57,6 +79,6 @@ export default async function deletePost({
   if (postImg) {
     await deleteObject(ref(storage, `posts/${postId}/image`));
   }
-
+  if (hasComments) revalidatePath(`/posts/${postId}`);
   revalidatePath("/");
 }

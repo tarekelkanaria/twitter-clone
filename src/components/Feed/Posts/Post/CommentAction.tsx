@@ -7,6 +7,7 @@ import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 
 const CommentAction = (props: CommentActionProps) => {
   const dispatch = useAppDispatch();
+  const { count } = props;
 
   const handleCommentModal = () => {
     dispatch(setPostInfo(props));
@@ -19,9 +20,7 @@ const CommentAction = (props: CommentActionProps) => {
         onClick={handleCommentModal}
         className="post-icon hover:bg-sky-100 hover:text-sky-600"
       />
-      {props.count > 0 && (
-        <span className="text-sm text-sky-600">{props.count}</span>
-      )}
+      {count > 0 && <span className="text-sm text-sky-600">{count}</span>}
     </div>
   );
 };

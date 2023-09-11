@@ -22,4 +22,5 @@ export default async function sendComment({
     timestamp: serverTimestamp(),
   });
   revalidatePath(`/`);
+  revalidatePath(`/posts/${id}`);
 }

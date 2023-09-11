@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { CommentSliceState, PostInfoAction } from "@/types";
+import type {
+  CommentSliceState,
+  CommentsCountAction,
+  PostInfoAction,
+} from "@/types";
 
 const initialState: CommentSliceState = {
   isVisible: false,

@@ -4,7 +4,6 @@ import {
   addDoc,
   collection,
   doc,
-  getCountFromServer,
   serverTimestamp,
   updateDoc,
 } from "firebase/firestore";
@@ -13,13 +12,7 @@ import { db, storage } from "./config";
 import { revalidatePath } from "next/cache";
 import type { UploadedPostType } from "@/types";
 
-export async function getPostsCount() {
-  const snapshot = await getCountFromServer(collection(db, "posts"));
-  const postsCount = snapshot.data().count;
-  return postsCount;
-}
-
-export async function sendPost({
+export default async function sendPost({
   uid,
   name,
   userName,
@@ -53,7 +46,6 @@ export async function sendPost({
       });
     }
     revalidatePath("/");
-    return await getPostsCount();
   } catch (error) {
     return error;
   }

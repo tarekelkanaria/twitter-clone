@@ -18,6 +18,7 @@ export interface ClientProvidersProps extends ParentProps {
 export type FeedHeaderProps = {
   isInPost: boolean;
 };
+
 export interface MenuItemType {
   id: string;
   text: string;
@@ -74,9 +75,17 @@ export interface RetrievedPostType extends UploadedPostType {
   timestamp: Timestamp;
 }
 
-export interface IndividualPostProps extends RetrievedPostType {
+export interface ClientRetrievedPostType extends UploadedPostType {
+  id: string;
+  timestamp: Date;
+}
+
+export interface IndividualPostProps extends ClientRetrievedPostType {
   commentId?: string;
   hasComments?: boolean;
+  isLast?: boolean;
+  getNewPosts?: (lastPostTime: Date) => Promise<void>;
+  postCommentsCount?: number;
 }
 
 export type DeletedPostType = {
@@ -121,15 +130,18 @@ export type PostTimeProps = {
 
 export type LikeActionProps = {
   postId: string;
-  allLikes: RetrievedLikeType[];
+  hasLiked: boolean;
+  likesCount: number;
   userName: string;
   userImg: string;
+  updateLikes: (id: string, commentId?: string) => Promise<void>;
   commentId?: string;
 };
 
 export type TrashProps = {
   postId: string;
   postImg: string | null;
+  updateCommentsCount: (id: string) => Promise<void>;
   commentId?: string;
   hasComments?: boolean;
 };
@@ -161,6 +173,11 @@ export type PostInfoAction = {
   payload: CommentActionProps;
 };
 
+export type CommentsCountAction = {
+  type: string;
+  payload: number;
+};
+
 export type PostPageProps = {
   params: {
     id: string;
@@ -169,4 +186,8 @@ export type PostPageProps = {
 
 export type CommentsListProps = {
   commentsList: RetrievedCommentType[];
+};
+
+export type PostsListProps = {
+  initialPosts: ClientRetrievedPostType[];
 };

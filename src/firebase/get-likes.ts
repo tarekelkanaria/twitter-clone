@@ -1,3 +1,5 @@
+"use server";
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./config";
 import type { RetrievedLikeType } from "@/types";

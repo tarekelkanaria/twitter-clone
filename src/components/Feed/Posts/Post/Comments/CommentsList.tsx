@@ -13,6 +13,7 @@ export default function CommentsList({ commentsList }: CommentsListProps) {
             commentId={comment.id}
             postText={comment.text}
             postImg={null}
+            timestamp={comment.timestamp.toDate()}
           />
         ))}
     </section>

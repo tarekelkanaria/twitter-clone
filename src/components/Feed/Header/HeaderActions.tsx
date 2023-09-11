@@ -1,7 +1,7 @@
 "use client";
 
-import { GoSignOut, GoSignIn } from "react-icons/go";
 import { useSession, signIn, signOut } from "next-auth/react";
+import { GoSignOut, GoSignIn } from "react-icons/go";
 
 export default function HeaderActions() {
   const { data: session } = useSession();

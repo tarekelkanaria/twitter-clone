@@ -2,27 +2,21 @@
 
 import sendLike from "@/firebase/send-like";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { LikeActionProps } from "@/types";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 
 const LikeAction = ({
   postId,
-  allLikes,
+  hasLiked,
+  likesCount,
   userName,
   userImg,
   commentId,
+  updateLikes,
 }: LikeActionProps) => {
-  const [hasLiked, setHasLiked] = useState(false);
   const [loading, setLoading] = useState(false);
   const { data: session } = useSession();
-  const stringCopyOfLikes = JSON.stringify(allLikes);
-
-  useEffect(() => {
-    setHasLiked(
-      allLikes.findIndex((like) => like.id === session?.user.uid) !== -1
-    );
-  }, [stringCopyOfLikes]);
 
   const handleLike = async () => {
     if (loading) return;
@@ -36,6 +30,7 @@ const LikeAction = ({
       commentId,
     });
 
+    updateLikes(postId, commentId);
     setLoading(false);
   };
 
@@ -56,9 +51,9 @@ const LikeAction = ({
           } post-icon hover:bg-rose-100 hover:text-rose-600`}
         />
       )}
-      {allLikes.length > 0 && (
+      {likesCount > 0 && (
         <span className={`${hasLiked && "text-red-600"} text-sm`}>
-          {allLikes.length}
+          {likesCount}
         </span>
       )}
     </div>

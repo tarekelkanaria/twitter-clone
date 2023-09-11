@@ -1,19 +1,6 @@
-import {
-  collection,
-  getCountFromServer,
-  getDocs,
-  orderBy,
-  query,
-} from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "./config";
 import type { RetrievedCommentType } from "@/types";
-
-export const getCommentsCount = async (id: string) => {
-  const commentsSnapshot = await getCountFromServer(
-    collection(db, "posts", id, "comments")
-  );
-  return commentsSnapshot.data().count;
-};
 
 export default async function getComments(id: string) {
   const queryRef = query(

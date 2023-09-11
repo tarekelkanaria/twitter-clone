@@ -1,6 +1,6 @@
 "use client";
 
-import { sendPost } from "@/firebase/send-post";
+import sendPost from "@/firebase/send-post";
 import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
 import Image from "next/image";
@@ -24,7 +24,9 @@ const FormSection = () => {
     }
 
     reader.onload = (readerEvent) => {
-      setSelectedFile(readerEvent.target?.result as string | undefined);
+      if (readerEvent.target?.result) {
+        setSelectedFile(readerEvent.target.result as string);
+      }
     };
   };
 
