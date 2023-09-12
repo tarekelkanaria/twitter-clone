@@ -26,6 +26,8 @@ const CommentModal = () => {
     Modal.setAppElement("#modals");
   }, []);
 
+  const timestamp = postInfo.timestamp && JSON.parse(postInfo?.timestamp);
+
   const uploadComment = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (pending) return;
@@ -53,10 +55,10 @@ const CommentModal = () => {
       className="modal"
     >
       <section className="p-1">
-        <header className="border-b border-gray-200 py-2 px-1.5">
+        <header className="modal-head">
           <div
             onClick={() => dispatch(toggleCommentModal())}
-            className="hover-effect flex justify-center items-center w-9 h-9 xl:h-9 xl:w-9 xl:p-0"
+            className="modal-close"
           >
             <GrClose className="text-xl text-gray-700" />
           </div>
@@ -73,7 +75,7 @@ const CommentModal = () => {
           <h2 className="user-name cursor-pointer">{postInfo.name}</h2>
           <h3 className="userName">@{postInfo.userName} -</h3>
           <Moment className="time cursor-pointer" fromNow>
-            {postInfo.timestamp}
+            {timestamp}
           </Moment>
         </div>
         <p className="text-sm sm:text-base text-gray-500 ml-16 mb-2">

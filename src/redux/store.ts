@@ -3,10 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import type { TypedUseSelectorHook } from "react-redux";
 import type { AppDispatch, RootState } from "@/types";
 import commentReducer from "./features/commentSlice";
+import likesReducer from "./features/likesSlice";
 
 const store = configureStore({
   reducer: {
     comment: commentReducer,
+    likes: likesReducer,
   },
 });
 

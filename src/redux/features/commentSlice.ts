@@ -1,9 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type {
-  CommentSliceState,
-  CommentsCountAction,
-  PostInfoAction,
-} from "@/types";
+import type { CommentSliceState, PostInfoAction } from "@/types";
 
 const initialState: CommentSliceState = {
   isVisible: false,
@@ -13,7 +9,7 @@ const initialState: CommentSliceState = {
     userName: "",
     userImg: "",
     postText: "",
-    timestamp: new Date(),
+    timestamp: "",
   },
 };
 

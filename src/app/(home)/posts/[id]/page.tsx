@@ -9,7 +9,7 @@ export default async function Post({ params }: PostPageProps) {
   const { id } = params;
   const post = await getPost(id).then((post) => ({
     ...post,
-    timestamp: post.timestamp.toDate(),
+    timestamp: post?.timestamp?.toDate(),
   }));
 
   const comments = await getComments(id);

@@ -1,6 +1,7 @@
-import CommentModal from "@/components/Modals/CommentModal";
 import SideBarContainer from "@/components/SideBar/SIdeBarContainer";
 import WidgetsContainer from "@/components/Widgets/WidgetsContainer";
+import CommentModal from "@/components/Modals/CommentModal";
+import LikesModal from "@/components/Modals/LikesModal";
 
 export default async function HomeLayout({
   children,
@@ -16,6 +17,7 @@ export default async function HomeLayout({
       <WidgetsContainer />
       <div id="modals">
         <CommentModal />
+        <LikesModal />
       </div>
     </>
   );

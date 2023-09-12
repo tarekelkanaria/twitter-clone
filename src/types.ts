@@ -132,8 +132,6 @@ export type LikeActionProps = {
   postId: string;
   hasLiked: boolean;
   likesCount: number;
-  userName: string;
-  userImg: string;
   updateLikes: (id: string, commentId?: string) => Promise<void>;
   commentId?: string;
 };
@@ -164,18 +162,33 @@ export type CommentSliceState = {
     userName: string;
     userImg: string;
     postText: string;
-    timestamp: Date;
+    timestamp: string;
   };
+};
+
+export type PostInfoPayload = {
+  postId: string;
+  name: string;
+  userName: string;
+  userImg: string;
+  postText: string;
+  timestamp: string;
+  count: number;
 };
 
 export type PostInfoAction = {
   type: string;
-  payload: CommentActionProps;
+  payload: PostInfoPayload;
 };
 
-export type CommentsCountAction = {
+export type LikesSliceState = {
+  isVisible: boolean;
+  likesList: RetrievedLikeType[];
+};
+
+export type LikesInitAction = {
   type: string;
-  payload: number;
+  payload: RetrievedLikeType[];
 };
 
 export type PostPageProps = {

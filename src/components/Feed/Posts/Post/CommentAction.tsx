@@ -2,7 +2,7 @@
 
 import { setPostInfo, toggleCommentModal } from "@/redux/features/commentSlice";
 import { useAppDispatch } from "@/redux/store";
-import type { CommentActionProps } from "@/types";
+import type { CommentActionProps, PostInfoPayload } from "@/types";
 import { HiOutlineChatBubbleOvalLeft } from "react-icons/hi2";
 
 const CommentAction = (props: CommentActionProps) => {
@@ -10,7 +10,11 @@ const CommentAction = (props: CommentActionProps) => {
   const { count } = props;
 
   const handleCommentModal = () => {
-    dispatch(setPostInfo(props));
+    const postInfo: PostInfoPayload = {
+      ...props,
+      timestamp: JSON.stringify(props.timestamp),
+    };
+    dispatch(setPostInfo(postInfo));
     dispatch(toggleCommentModal());
   };
 

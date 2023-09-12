@@ -39,6 +39,12 @@
   .modal {
     @apply max-w-lg w-[90%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-gray-400 shadow-md rounded-xl focus:outline-none;
   }
+  .modal-head {
+    @apply border-b border-gray-200 py-2 px-1.5;
+  }
+  .modal-close {
+    @apply hover-effect flex justify-center items-center w-9 h-9 xl:h-9 xl:w-9 xl:p-0;
+  }
   .user-name {
     @apply font-bold text-sm sm:text-base hover:underline transition-colors duration-150;
   }

@@ -10,8 +10,6 @@ const LikeAction = ({
   postId,
   hasLiked,
   likesCount,
-  userName,
-  userImg,
   commentId,
   updateLikes,
 }: LikeActionProps) => {
@@ -24,8 +22,8 @@ const LikeAction = ({
     await sendLike({
       id: postId,
       userId: session?.user.uid!,
-      userName,
-      userImg,
+      userName: session?.user.userName!,
+      userImg: session?.user.image!,
       hasLiked,
       commentId,
     });
