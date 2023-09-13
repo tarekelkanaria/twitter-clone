@@ -37,10 +37,10 @@
     @apply px-4 py-2 flex items-center hover:bg-gray-200 transition-colors duration-200 mb-3;
   }
   .modal {
-    @apply max-w-lg w-[90%] absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-white border-2 border-gray-400 shadow-md rounded-xl focus:outline-none;
+    @apply max-w-lg w-full sm:w-[90%] absolute top-16 left-1/2 -translate-x-1/2 bg-white border-2 border-gray-400 shadow-md rounded-xl focus:outline-none z-50;
   }
   .modal-head {
-    @apply border-b border-gray-200 py-2 px-1.5;
+    @apply border-b border-gray-200 sm:py-2 px-1.5;
   }
   .modal-close {
     @apply hover-effect flex justify-center items-center w-9 h-9 xl:h-9 xl:w-9 xl:p-0;
@@ -61,12 +61,15 @@
     @apply user-poster cursor-pointer hover:brightness-95 transition-colors duration-150 self-start;
   }
   .user-form {
-    @apply flex-grow divide-y divide-gray-200;
+    @apply flex-grow divide-y divide-gray-200 relative;
   }
   .user-text {
     @apply w-full min-h-[50px] border-none text-gray-700 focus:ring-0 text-lg placeholder-gray-700 tracking-wide;
   }
   .form-btn {
     @apply px-4 py-1.5 min-w-[68px] max-h-[36px] main-btn text-base disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+  .emoji-picker {
+    @apply absolute top-full left-0 sm:left-14 w-64 sm:w-[350px] z-10;
   }
 }

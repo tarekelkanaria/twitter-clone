@@ -4,6 +4,8 @@ import sendPost from "@/firebase/send-post";
 import { useSession } from "next-auth/react";
 import { useRef, useState } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import EmojiPicker, { EmojiClickData, EmojiStyle } from "emoji-picker-react";
 import ClipLoader from "react-spinners/ClipLoader";
 import { HiOutlinePhotograph, HiOutlineEmojiHappy } from "react-icons/hi";
 import { GrClose } from "react-icons/gr";
@@ -13,9 +15,11 @@ const FormSection = () => {
   const [selectedFile, setSelectedFile] = useState<string | undefined>(
     undefined
   );
+  const [pending, setPending] = useState(false);
+  const [isImojiPickerVisible, setIsImojiPickerVisible] =
+    useState<boolean>(false);
   const filePickerRef = useRef<HTMLInputElement>(null);
   const { data: session } = useSession();
-  const [pending, setPending] = useState(false);
 
   const extractImgDataUrl = (e: React.ChangeEvent<HTMLInputElement>) => {
     const reader = new FileReader();
@@ -28,6 +32,14 @@ const FormSection = () => {
         setSelectedFile(readerEvent.target.result as string);
       }
     };
+  };
+
+  const toggleImojiPickerVisibility = () => {
+    setIsImojiPickerVisible(!isImojiPickerVisible);
+  };
+
+  const handleSelectEmoji = (emojiData: EmojiClickData, event: MouseEvent) => {
+    setPostText((prevText) => prevText + emojiData.emoji);
   };
 
   const uploadPost = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -44,6 +56,7 @@ const FormSection = () => {
       postImg: selectedFile ? selectedFile : null,
     });
 
+    setIsImojiPickerVisible(false);
     setPostText("");
     setSelectedFile(undefined);
     setPending(false);
@@ -98,7 +111,10 @@ const FormSection = () => {
                     onChange={extractImgDataUrl}
                   />
                 </div>
-                <HiOutlineEmojiHappy className="form-icon" />
+                <HiOutlineEmojiHappy
+                  onClick={toggleImojiPickerVisibility}
+                  className="form-icon"
+                />
               </div>
               <button
                 type="submit"
@@ -109,6 +125,22 @@ const FormSection = () => {
                 {!pending && "Post"}
               </button>
             </div>
+            {isImojiPickerVisible && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="emoji-picker"
+              >
+                <EmojiPicker
+                  onEmojiClick={handleSelectEmoji}
+                  emojiStyle={EmojiStyle.TWITTER}
+                  lazyLoadEmojis={true}
+                  width="100%"
+                />
+              </motion.div>
+            )}
           </form>
         </section>
       )}

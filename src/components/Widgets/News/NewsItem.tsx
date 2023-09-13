@@ -7,7 +7,7 @@ const NewsItem = ({
   source: { name: sourceName },
 }: NewsItemType) => {
   return (
-    <a href={url} target="_blank">
+    <a href={url} target="_blank" rel="noreferrer">
       <article className="widget-item-container justify-between space-x-1">
         <div>
           <h3 className="mb-0.5 text-sm font-bold text-gray-700">{title}</h3>
