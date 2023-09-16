@@ -24,8 +24,8 @@ export default async function Signin() {
           width="128"
           className="object-cover mb-10"
         />
-        <div className="text-center">
-          <p className="italic text-sm mb-10">
+        <div className="flex flex-col gap-y-2 text-center">
+          <p className="italic text-sm mb-8">
             This app is created for learning purposes
           </p>
           {providers &&
