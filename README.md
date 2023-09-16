@@ -1,34 +1,54 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Twitter Clone
 
-## Getting Started
+---
 
-First, run the development server:
+Social media app like twitter to share your ideas and images with the community, only for learning purposes.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+**_credits goes to_** @sahandghavidel
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Demo preview
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+[Link to the project](https://twitter-clone-elkanaria.vercel.app)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<font color="#1a237e">
 
-## Learn More
+## Modifications
 
-To learn more about Next.js, take a look at the following resources:
+- [x] I've added Next.js version 13 instead of version 12.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [x] I built Infinite scroll functionality to reduce the usage of resources based on user scrolling.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- [x] Implement a likes modal to display the users who likes the post.
 
-## Deploy on Vercel
+- [x] Implement server actions to mutate firebase database.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- [x] Integrate react redux with Next.js 13 as state management.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- [x] emoji support using emoji picker react to allow the user to add emoji to post or comments.
+
+- [x] **Typescript** for strongly typed data and reduce errors.
+
+</font>
+
+## Used languages and tools
+
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Next.js 13
+- Tailwind CSS
+- Next Auth
+- react redux & redux toolkit
+- framer motion
+- react moment
+- emoji picker react
+- react modal
+- react icons
+
+## for Backend
+
+- firebase firestore
+- firebase storage
+- firebase adapter with Next auth

@@ -1,14 +1,11 @@
 import NextAuth from "next-auth/next";
 import GoogleProvider from "next-auth/providers/google";
-import FacebookProvider from "next-auth/providers/facebook";
 import { FirestoreAdapter } from "@next-auth/firebase-adapter";
 import { cert } from "firebase-admin/app";
 import type { NextAuthOptions } from "next-auth";
 
 const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
 const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
-const FACEBOOK_CLIENT_ID = process.env.FACEBOOK_CLIENT_TEST_ID!;
-const FACEBOOK_CLIENT_SECRET = process.env.FACEBOOK_CLIENT_TEST_SECRET!;
 const NEXTAUTH_SECRET = process.env.NEXTAUTH_SECRET;
 const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID;
 const FIREBASE_CLIENT_EMAIL = process.env.FIREBASE_CLIENT_EMAIL;
@@ -21,10 +18,6 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: GOOGLE_CLIENT_ID,
       clientSecret: GOOGLE_CLIENT_SECRET,
-    }),
-    FacebookProvider({
-      clientId: FACEBOOK_CLIENT_ID,
-      clientSecret: FACEBOOK_CLIENT_SECRET,
     }),
   ],
   adapter: FirestoreAdapter({
